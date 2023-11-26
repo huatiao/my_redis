@@ -1,7 +1,8 @@
 #include "Main.h"
+#include "Task.h"
 #include "log.h"
-#include <iostream>
 #include "RedisCMD.h"
+#include <iostream>
 
 using namespace std;
 
@@ -27,6 +28,12 @@ void Main::End()
 
 
 ///////////////////////////////////////////////////////////////
+
+#define TEST
+#ifdef TEST
+#include "test/test.h"
+#endif
+
 int main()
 {
     LOG_ERROR("hello %s %f", "world", 999.666);
@@ -40,8 +47,15 @@ int main()
         return 0;
     }
 
-    cout << RedisCMD::ping() << endl;
-    cout << RedisCMD::set("aaa", "1297ushnf") << endl;
+    // cout << RedisCMD::ping() << endl;
+    // cout << RedisCMD::set("aaa", "1297ushnf") << endl;
+
+    int iU1 = 10002;
+
+    Task task;
+    task.RecvLoginReq(iU1);
+    task.RecvDisconnectReq(iU1);
+
 
     main.End();
     return 0;

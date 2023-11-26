@@ -4,6 +4,7 @@ target("my_redis")
     set_kind("binary")
     set_symbols("debug")
 
+    add_includedirs("$(projectdir)")
     add_includedirs("third")
     add_includedirs("src")
     

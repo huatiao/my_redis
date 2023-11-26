@@ -1,6 +1,7 @@
 #include "RedisCMD.h"
 #include "hiredis/hiredis.h"
 #include "log.h"
+#include <iostream>
 
 redisContext *RedisCMD::s_pContext = nullptr;
 

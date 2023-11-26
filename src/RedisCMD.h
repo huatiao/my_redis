@@ -2,7 +2,6 @@
 #define __REDIS_REDISCMD_H__
 
 #include "hiredis/hiredis.h"
-#include <iostream>
 #include <string>
 
 using std::string;
