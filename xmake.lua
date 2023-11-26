@@ -1,9 +1,12 @@
-add_rules("mode.debug")
+set_defaultmode("debug")
 
 target("my_redis")
     set_kind("binary")
+    set_symbols("debug")
 
     add_includedirs("third")
+    add_includedirs("src")
+    
     add_files("src/*.cpp")
 
     -- 添加静态库文件

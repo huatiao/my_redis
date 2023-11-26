@@ -30,3 +30,13 @@
 *.exe
 *.out
 *.app
+
+# build dir
+build
+.xmake
+
+# clangd dir
+.cache
+
+# vscode conf
+.vscode
