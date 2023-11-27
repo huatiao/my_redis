@@ -1,7 +1,7 @@
 #ifndef __REDIS_REDISCMD_H__
 #define __REDIS_REDISCMD_H__
 
-#include "third/hiredis/hiredis.h"
+#include "hiredis/hiredis.h"
 #include <string>
 
 using std::string;
