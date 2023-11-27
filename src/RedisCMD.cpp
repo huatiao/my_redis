@@ -1,5 +1,5 @@
 #include "RedisCMD.h"
-#include "hiredis/hiredis.h"
+#include "third/hiredis/hiredis.h"
 #include "log.h"
 #include <iostream>
 
