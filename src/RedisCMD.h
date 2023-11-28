@@ -15,7 +15,7 @@ public:
 
     // 命令比较特殊，统一用小写
     static string ping();
-    static string set(const char *sKey, const char *sValue);
+    static bool set(const char *sKey, const char *sValue);
     
 
     // static string GET() {

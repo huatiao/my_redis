@@ -48,13 +48,13 @@ int main()
     }
 
     // cout << RedisCMD::ping() << endl;
-    // cout << RedisCMD::set("aaa", "1297ushnf") << endl;
+    cout << RedisCMD::set("ccc", "agfiunf") << endl;
 
-    int iU1 = 10002;
+    // int iU1 = 10002;
 
-    Task task;
-    task.RecvLoginReq(iU1);
-    task.RecvDisconnectReq(iU1);
+    // Task task;
+    // task.RecvLoginReq(iU1);
+    // task.RecvDisconnectReq(iU1);
 
 
     main.End();
