@@ -15,8 +15,10 @@ public:
 
     // 命令比较特殊，统一用小写
     static string ping();
-    static bool set(const char *sKey, const char *sValue);
+    static bool set(const char *pKey, const char *pValue);
     
+    //one time, one field
+    static bool hset(const char *pKey, const char *pfield, const char *pValue);  
 
     // static string GET() {
     //     redisReply *reply = (redisReply*)redisCommand(s_pContext,"GET foo");

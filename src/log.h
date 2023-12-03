@@ -7,7 +7,8 @@
 
 // e.g. LOG_DEBUG("main", "test %s %d %f", "hello", 999, 0.123);
 
-#define LOG_DEBUG(...)                                                                                        \
+#define LOG_DEBUG(...)                                                                                                 \
+    do                                                                                                                 \
     {                                                                                                                  \
         char sBuff[32] = {0};                                                                                          \
         time_t t = time(NULL);                                                                                         \
@@ -17,9 +18,10 @@
         printf(sOut);                                                                                                  \
         printf(__VA_ARGS__);                                                                                           \
         printf("\n");                                                                                                  \
-    }
+    } while (0)
 
 #define LOG_ERROR(...)                                                                                                 \
+    do                                                                                                                 \
     {                                                                                                                  \
         char sBuff[32] = {0};                                                                                          \
         time_t t = time(NULL);                                                                                         \
@@ -29,6 +31,6 @@
         printf(sOut);                                                                                                  \
         printf(__VA_ARGS__);                                                                                           \
         printf("\n");                                                                                                  \
-    }
+    } while (0)
 
 #endif //!__LOG__

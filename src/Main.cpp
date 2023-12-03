@@ -48,7 +48,8 @@ int main()
     }
 
     // cout << RedisCMD::ping() << endl;
-    cout << RedisCMD::set("ccc", "agfiunf") << endl;
+    // RedisCMD::set("ccc", "agfiunf");
+    RedisCMD::hset("test:1001", "field2", "vvvv");
 
     // int iU1 = 10002;
 
