@@ -14,3 +14,5 @@ target("my_redis")
     add_linkdirs("third/hiredis")
     add_links("libhiredis.a")
 
+    set_targetdir("$(projectdir)/bin")
+

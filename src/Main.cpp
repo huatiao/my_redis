@@ -1,17 +1,32 @@
 #include "Main.h"
-#include "Task.h"
-#include "log.h"
 #include "RedisCMD.h"
-#include <iostream>
-
+#include "base_head.h"
+#include "log.h"
+#include <cstdio>
+#include <fstream>
+#include <unistd.h>
 using namespace std;
+
+#define CONF_PATH "../etc/"
 
 bool Main::Start()
 {
-    const char *hostname = "127.0.0.1";
-    unsigned short port = 6379;
+    char fileName[128] = {0};
+    sprintf(fileName, "%sredis.json", CONF_PATH);
+    std::ifstream ifs (fileName);
+    if (ifs.is_open() == false)
+    {
+        LOG_ERROR("open %s error", fileName);
+        return false;
+    }
 
-    if (RedisCMD::Connect(hostname, port) == false)
+    json redisConf = json::parse(ifs);
+    ifs.close();
+    string hostname = redisConf.value("hostname", "");  //Using .value replace .at or [], will not throw exceptions
+    int port = redisConf.value("port", 0);
+    string password = redisConf.value("password", "");
+
+    if (RedisCMD::Connect(hostname.c_str(), port, password.c_str()) == false)
     {
         LOG_ERROR("Redis connect error");
         return false;
@@ -25,39 +40,3 @@ void Main::End()
     RedisCMD::DisConnect();
 }
 
-
-
-///////////////////////////////////////////////////////////////
-
-#define TEST
-#ifdef TEST
-#include "test/test.h"
-#endif
-
-int main()
-{
-    LOG_ERROR("hello %s %f", "world", 999.666);
-
-    Main main;
-
-    if (main.Start() == false)
-    {
-        LOG_ERROR("Main init error");
-        main.End();
-        return 0;
-    }
-
-    // cout << RedisCMD::ping() << endl;
-    // RedisCMD::set("ccc", "agfiunf");
-    RedisCMD::hset("test:1001", "field2", "vvvv");
-
-    // int iU1 = 10002;
-
-    // Task task;
-    // task.RecvLoginReq(iU1);
-    // task.RecvDisconnectReq(iU1);
-
-
-    main.End();
-    return 0;
-}
